@@ -7,6 +7,8 @@ export default function Friend(props) {
         <div className='friendInfo'>
             <h4><span className='key'>Age:</span> {props.friend.age}</h4><br/>
             <p><span className='key'>E-mail:</span> {props.friend.email}</p>
+            <button onClick={e => props.setUpdateForm(e, props.friend)} >Update Info</button>
+            <button onClick={e => props.deleteFriend(e, props.friend.id)}>X</button>
         </div>
     </div>
   )

@@ -103,3 +103,22 @@ table {
   margin: auto;
   border-radius: 50%;
 }
+
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 1% auto;
+  width: 350px;
+  border: 5px solid white;
+  border-radius: 16px;
+  background-color: lightgrey;
+}
+
+button{
+  margin: 1%;
+}
+
+input{
+  text-align: center;
+}

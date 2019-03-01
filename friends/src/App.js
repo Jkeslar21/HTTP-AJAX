@@ -3,16 +3,16 @@ import './App.css';
 import axios from 'axios';
 import FriendsList from './components/FriendsList';
 import FriendForm from './components/FriendForm';
+import FriendTitle from './components/FriendTitle';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
+
+    state = {
       friends: [],
       error: '',
       activeFriend: null
     }
-  }
+  
   componentDidMount() {
     axios
       .get('http://localhost:5000/friends')
@@ -53,6 +53,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <FriendTitle />
         <FriendForm addFriend={this.addFriend} updateFriend={this.updateFriend} activeFriend={this.state.activeFriend} />
         <FriendsList friends={this.state.friends} deleteFriend={this.deleteFriend} setUpdateForm={this.setUpdateForm} />
       </div>

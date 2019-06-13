@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class FriendForm extends Component {
   constructor(props) {
@@ -8,13 +8,14 @@ export default class FriendForm extends Component {
                 name: '',
                 age: '',
                 email: ''
-            }
+            },
+            active: false
     }
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.activeFriend && prevProps.activeFriend !== this.props.activeFriend) {
-        this.setState({ friend: this.props.activeFriend })
+        this.setState({ friend: this.props.activeFriend, active: true })
     }
   }
 
@@ -24,7 +25,7 @@ export default class FriendForm extends Component {
   }
  
   submitHandler = (e, friend) => {
-    if (this.props.activeFriend) {
+    if (this.state.active) {
       this.props.updateFriend( e, this.state.friend)
     } else{
       this.props.addFriend(e, this.state.friend)
@@ -34,7 +35,7 @@ export default class FriendForm extends Component {
         name: '',
         age: '',
         email: ''
-    } })
+    }, active: false })
   }
 
   render() {
@@ -42,9 +43,9 @@ export default class FriendForm extends Component {
       <div>
         <form onSubmit={this.submitHandler} className='form' >
             <input type='text' name='name' placeholder='Name' value={this.state.friend.name} onChange={this.changeHandler} required/>
-            <input type='number' name='age' placeholder='Age' value={this.state.friend.age} onChange={this.changeHandler} required/>
+            <input type='text' name='age' placeholder='Age' value={this.state.friend.age} onChange={this.changeHandler} required/>
             <input type='text' name='email' placeholder='E-mail' value={this.state.friend.email} onChange={this.changeHandler} required/>
-            <button>{`${this.props.activeFriend ? 'Update' : 'Add Friend'}`}</button>
+            <button>{`${this.state.active ? 'Update' : 'Add Friend'}`}</button>
         </form>
       </div>
     )

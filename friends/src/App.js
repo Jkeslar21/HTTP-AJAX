@@ -4,6 +4,7 @@ import axios from 'axios';
 import FriendsList from './components/FriendsList';
 import FriendForm from './components/FriendForm';
 import FriendTitle from './components/FriendTitle';
+import { Button } from 'reactstrap'
 
 class App extends Component {
 
@@ -39,7 +40,7 @@ class App extends Component {
   updateFriend = (e, friend) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:500/friends/${friend.id}`, friend)
+      .put(`http://localhost:5000/friends/${friend.id}`, friend)
       .then(res => this.setState({ friends: res.data }))
       .catch(err => console.log(err))
   }
@@ -52,6 +53,9 @@ class App extends Component {
 
   render() {
     return (
+      // <>
+      //   <Button color='warning'>Button Me</Button>
+      //   </>
       <div className="App">
         <FriendTitle />
         <FriendForm addFriend={this.addFriend} updateFriend={this.updateFriend} activeFriend={this.state.activeFriend} />
